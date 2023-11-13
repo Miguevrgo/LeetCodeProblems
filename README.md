@@ -1,2 +1,2 @@
 # LeetCodeProblems
-Personal repository to solve LeetCode Problems, mainly in C++T
+Personal repository to solve LeetCode Problems, mainly in C++
