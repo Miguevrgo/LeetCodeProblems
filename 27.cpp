@@ -4,13 +4,13 @@ using namespace std;
 class Solution {
   public:
     int removeElement(vector<int> &nums, int val) {
-        int validIndex = 0;
-        for (int i = 0; i < nums.size(); ++i) {
+        size_t valid_index = 0;
+        for (size_t i = 0; i < nums.size(); ++i) {
             if (nums[i] != val) {
-                nums[validIndex] = nums[i];
-                ++validIndex;
+                nums[valid_index] = nums[i];
+                ++valid_index;
             }
         }
-        return validIndex;
+        return static_cast<int>(valid_index);
     }
 };
