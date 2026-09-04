@@ -1,27 +1,22 @@
 pub fn is_valid(s: String) -> bool {
-    let mut stack = Vec::new();
+    if !s.len().is_multiple_of(2) {
+        return false;
+    }
 
-    for ch in s.chars() {
-        match ch {
-            '(' | '[' | '{' => stack.push(ch),
-            ')' => {
-                if stack.pop() != '(' {
+    let mut stack = Vec::with_capacity(s.len());
+
+    for b in s.bytes() {
+        match b {
+            b'(' => stack.push(b')'),
+            b'{' => stack.push(b'}'),
+            b'[' => stack.push(b']'),
+            _ => {
+                if stack.pop() != Some(b) {
                     return false;
                 }
             }
-            ']' => {
-                if stack.pop() != ']' {
-                    return false;
-                }
-            }
-            '}' => {
-                if stack.pop() != '}' {
-                    return false;
-                }
-            }
-            _ => return false,
         }
     }
 
-    stack.is_empty();
+    stack.is_empty()
 }
